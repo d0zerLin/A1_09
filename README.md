@@ -12,14 +12,19 @@ and the result turned out to be:
 # Code comment and simulation result
 Matrix multiplier:
 
-//Module for calculating out = data1*data2. Where data1,data2 and out are 2 by 2 matrices.
-module two_by_two(data1,data2,out); 
+    //Module for calculating out = data1*data2. Where data1,data2 and out are 2 by 2 matrices.
+
     //input and output ports.
-    //The size 32 bits which is 2*2=4 elements,each of which is 8 bits wide.    
+
+    //The size 32 bits which is 2*2=4 elements,each of which is 8 bits wide. 
+
+    module two_by_two(data1,data2,out);   
     input [31:0] data1;
     input [31:0] data2;
-    output [31:0] out;   
-    //internal variables    
+    output [31:0] out; 
+    
+    //internal variables
+    
     reg [31:0] out;
     reg [7:0] a1 [0:1][0:1];
     reg [7:0] b1 [0:1][0:1];
@@ -28,7 +33,9 @@ module two_by_two(data1,data2,out);
 
     always@ (data1 or data2)
     begin
+    
     //Initialize the matrices-convert 1 D to 3D arrays
+    
         {a1[0][0],a1[0][1],a1[1][0],a1[1][1]} = data1;
         {b1[0][0],b1[0][1],b1[1][0],b1[1][1]} = data2;
         i = 0;
@@ -43,29 +50,29 @@ module two_by_two(data1,data2,out);
         //final output assignment - 3D array to 1D array conversion.    
         out = {out1[0][0],out1[0][1],out1[1][0],out1[1][1]};            
     end 
-
-endmodule
+    endmodule
 
 Testbench Code:
 
-module two_by_two_tb();
-// Inputs
-reg [31:0] data1;
-reg [31:0] data2;
-// Outputs
-wire [31:0] out;
-// Instantiate the Unit Under Test (UUT)
-two_by_two T1 (.data1(data1), .data2(data2), .out(out));
+    module two_by_two_tb();
+    reg [31:0] data1;
+    reg [31:0] data2;
+    wire [31:0] out;
+    two_by_two T1 (.data1(data1), .data2(data2), .out(out));
 
     initial begin
+    
         // Apply Inputs
+        
         data1 = 0;  data2 = 0;  #100;
         data1 = {8'd1,8'd2,8'd3,8'd4};
-        data2 = {8'd5,8'd6,8'd7,8'd8}; //[ 1 2    ×    [ 5 6
-                                       //  3 4 ]         7 8 ]
-    end
-      
-endmodule
+        data2 = {8'd5,8'd6,8'd7,8'd8}; 
+        
+        //[ 1 2    ×    [ 5 6                                       
+        //  3 4 ]         7 8 ]
+        
+    end      
+    endmodule
 
 Simulation waveform:
 
