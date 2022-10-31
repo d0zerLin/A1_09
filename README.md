@@ -80,6 +80,6 @@ The codes were simulated using Xilinx Vivado. The following waveform verifies th
 
 ![Alt text](https://github.com/d0zerLin/A1_09/blob/main/4.jpg)
 
-Schematic:
+This is the circuit Schematic of two_by_two matmul:
 
 ![Alt text](https://github.com/d0zerLin/A1_09/blob/main/5.jpg)
