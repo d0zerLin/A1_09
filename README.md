@@ -110,4 +110,4 @@ And we've done a 2by2 matrix multiplication and used 4 2by2 matrix multiplicatio
 
 The wavwform is shown below:
 
-
+![Alt text](https://github.com/d0zerLin/A1_09/blob/main/%E5%9B%BE%E7%89%873.png)
