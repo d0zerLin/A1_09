@@ -102,8 +102,12 @@ In the next iterations we choose a new k' := (k + 1) mod n for every processor. 
 
 After the initial distribution of each processor, only the data for the next step has to be stored. These are the intermediate result of the previous sum, a {\displaystyle a_{ik}}{\displaystyle a_{ik}} and a {\displaystyle b_{kj}}{\displaystyle b_{kj}}. This means that all three matrices only need to be stored in memory once evenly distributed across the processors.
 
-As the picture showed below.
+As the picture shown below:
 
 ![Alt text](https://github.com/d0zerLin/A1_09/blob/main/%E5%9B%BE%E7%89%871.png)
 
-And we've done a 2by2 matrix multiplication and used 4 2by2 matrix multiplication biuld a 4by4 matrix multiplication. The code is provided 
+And we've done a 2by2 matrix multiplication and used 4 2by2 matrix multiplication biuld a 4by4 matrix multiplication. The code is provided in Mat2x2.v and Matrix4x4.v
+
+The wavwform is shown below:
+
+
