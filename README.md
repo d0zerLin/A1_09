@@ -106,3 +106,4 @@ As the picture showed below.
 
 ![Alt text](https://github.com/d0zerLin/A1_09/blob/main/%E5%9B%BE%E7%89%871.png)
 
+And we've done a 2by2 matrix multiplication and used 4 2by2 matrix multiplication biuld a 4by4 matrix multiplication. The code is provided 
