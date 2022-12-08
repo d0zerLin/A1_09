@@ -83,3 +83,19 @@ The codes were simulated using Xilinx Vivado. The following waveform verifies th
 This is the circuit Schematic of two_by_two matmul:
 
 ![Alt text](https://github.com/d0zerLin/A1_09/blob/main/5.jpg)
+
+
+
+
+# Cannon Algorithm
+To speed up matrix multiplication, we're going to try different algorithms. One of them is Cannon Algorithm.
+When multiplying two n×n matrices A and B, we need n×n processing nodes p arranged in a 2D grid. Initially pi,j is responsible for ai,j and bi,j.
+We need to select k in every iteration for every Processor Element (PE) so that processors don't access the same data for computing {\displaystyle a_{ik}*b_{kj}}{\displaystyle a_{ik}*b_{kj}}.
+
+Therefore processors in the same row / column must begin summation with different indexes. If for example PE(0,0) calculates {\displaystyle a_{00}*b_{00}}{\displaystyle a_{00}*b_{00}} in the first step, PE(0,1) chooses {\displaystyle a_{01}*b_{11}}{\displaystyle a_{01}*b_{11}} first. The selection of k := (i + j) mod n for PE(i,j) satisfies this constraint for the first step.
+
+In the first step we distribute the input matrices between the processors based on the previous rule.
+
+In the next iterations we choose a new k' := (k + 1) mod n for every processor. This way every processor will continue accessing different values of the matrices. The needed data is then always at the neighbour processors. A PE(i,j) needs then the {\displaystyle a}a from PE(i,(j + 1) mod n) and the {\displaystyle b}b from PE((i + 1) mod n,j) for the next step. This means that {\displaystyle a}a has to be passed cyclically to the left and also {\displaystyle b}b cyclically upwards. The results of the multiplications are summed up as usual. After n steps, each processor has calculated all {\displaystyle a_{ik}*b_{kj}}{\displaystyle a_{ik}*b_{kj}} once and its sum is thus the searched {\displaystyle c_{ij}}c_{ij}.
+
+After the initial distribution of each processor, only the data for the next step has to be stored. These are the intermediate result of the previous sum, a {\displaystyle a_{ik}}{\displaystyle a_{ik}} and a {\displaystyle b_{kj}}{\displaystyle b_{kj}}. This means that all three matrices only need to be stored in memory once evenly distributed across the processors.
